@@ -7,7 +7,7 @@
 
 
 #define countDataAmount 4 //Number of timers
-unsigned long countData[countDataAmount] = {millis()}; //Holds count information. (Adjust for numeber of timers needed.)
+unsigned long countData[countDataAmount] = {0}; //Holds count information. (Adjust for numeber of timers needed.)
 
 
 //Used by timer function
@@ -38,9 +38,12 @@ bool timer(unsigned long _interval,int _id) { //_interval in millis, _id in coun
   if (millisCount(1,_id) >= _interval) {
     millisCount(0,_id);
     return true;
+    Serial.print("Timer: "); Serial.print(_id); Serial.print(" ");
+    Serial.println("True");
   } else {
     return false;
   }
+   
 }
 
 unsigned long timerCheck(int _id) { //Simply return the elapsed count
