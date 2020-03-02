@@ -14,6 +14,8 @@
  *  Original Author: James Eli
  *  
  *  Modifications and additions by: Cory McGahee
+ *  
+ *  Non-Commercial use ONLY!
  */ 
 
 int configVersion = 0;
