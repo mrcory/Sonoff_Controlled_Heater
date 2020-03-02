@@ -11,8 +11,9 @@
  *  The Wemo functions have been removed.
  *  
  *  https://ucexperiment.wordpress.com/2019/01/20/using-a-sonoff-s31-with-blynk/
- *  Author: James Eli
- *  Date: 1/20/2019
+ *  Original Author: James Eli
+ *  
+ *  Modifications and additions by: Cory McGahee
  */ 
 
 int configVersion = 0;
