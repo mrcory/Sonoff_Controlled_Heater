@@ -74,12 +74,14 @@ int energyResetCounter;
 
 //-------------------------------
 bool relayOveride = false;
+bool relayControl = false;
 
 #include "config.h"
 #include "timer.h"
 #include "blynk.h"
-#include "blynkFunc.h"
 #include "function.h"
+#include "blynkFunc.h"
+
 
 
 
@@ -136,9 +138,19 @@ bool relayOveride = false;
  }
 
 void loop() {
-  if (timer(2,2000)) {
+  if (timer(1000,2) == true) {
     sendBlynk();
+    Serial.println(temp.cur);
   }
+
+  if (isFirstRun == true) {
+   Blynk.virtualWrite(V53,temp.target);
+   Blynk.virtualWrite(V55,temp.offset);
+   Blynk.virtualWrite(V57,cooldownPeriod);
+  }
+  
+
+  isFirstRun = false;
   
   ArduinoOTA.handle();
   Blynk.run();
@@ -146,9 +158,12 @@ void loop() {
 
   if (!relayOveride) {
     tempProcess();
+  } else {
+    if (relayControl) {
+      RelayOn();
+    } else {
+      RelayOff();
+    }
   }
 
-  if (isFirstRun == true) {
-    isFirstRun = false;
-  }
 }
