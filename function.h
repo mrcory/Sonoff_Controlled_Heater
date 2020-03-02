@@ -269,53 +269,42 @@ void tempProcess() {
   }
 }
 
-int configWritePos = 10;
-
-void quickPut(int _target) {
-  EEPROM.put(configWritePos,_target);
-  configWritePos+=sizeof(_target);
-}
-
-int quickGet() {
-  int _temp;
-  EEPROM.get(configWritePos,_temp);
-  configWritePos+=sizeof(_temp);
-  return _temp;
-}
-
-void quickPutFloat(float _target) {
-  EEPROM.put(configWritePos,_target);
-  configWritePos+=sizeof(_target);
-}
-
-int quickGetFloat() {
-  float _temp;
-  EEPROM.get(configWritePos,_temp);
-  configWritePos+=sizeof(_temp);
-  return _temp;
-}
-
 void configSave() {
   EEPROM.write(0,1); //Flag for autoload
   EEPROM.put(3,configVersion);
-  configWritePos = 10;
-  quickPutFloat(temp.target);
-  quickPutFloat(temp.offset);
-  quickPut(temp.mode);
-  quickPut(cooldownPeriod);
+  int i=10;
+  EEPROM.put(i,temp.target);
+  i+=sizeof(temp.target);
+  EEPROM.put(i,temp.offset);
+  i+=sizeof(temp.offset);
+  EEPROM.put(i,temp.unit);
+  i+=sizeof(temp.unit);
+  EEPROM.put(i,cooldownPeriod);
+  i+=sizeof(cooldownPeriod);
 
   EEPROM.commit();
   Serial.println("Config Saved");
 }
 
+
+
 void configLoad() {
-  configWritePos = 10;
-  temp.target    = quickGetFloat();
-  temp.offset    = quickGetFloat();
-  temp.mode      = quickGet();
-  cooldownPeriod = quickGet();
+  int i=10;
+  EEPROM.get(i,temp.target);
+  i+=sizeof(temp.target);
+  EEPROM.get(i,temp.offset);
+  i+=sizeof(temp.offset);
+  EEPROM.get(i,temp.unit);
+  i+=sizeof(temp.unit);
+  EEPROM.get(i,cooldownPeriod);
+  i+=sizeof(cooldownPeriod);
 
   Serial.println("Config Loaded");
+
+  Serial.println(temp.target);
+  Serial.println(temp.offset);
+  Serial.println(temp.unit);
+  Serial.println(cooldownPeriod);
 }
 
 byte returnConfigVersion() {
