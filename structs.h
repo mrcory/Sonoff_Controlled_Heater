@@ -2,5 +2,5 @@ struct Temperature {
   float         cur;
   float         target;
   float         offset;
-  int           mode;
+  int           unit;
 };
