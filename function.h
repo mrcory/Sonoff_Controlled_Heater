@@ -239,18 +239,17 @@ void ReadCse7766()
 
 //Basic functions that must run
 void process() {
-  if (timer(0,1000)) {
+  if (timer(1000,0)) {
     ReadCse7766();
   }
 
-  if (timer(1,100)) {
+  if (timer(100,1)) {
     ButtonCheck();
   }
 }
 
 bool cooldownCheck() {
   if (timerCheck(3) >= cooldownPeriod*1000) {
-    timerReset(3);
     return true;
   } else {
     return false;
@@ -263,11 +262,13 @@ void tempProcess() {
       RelayOn();
     }
   } else {
-    if (relayState == true) {
+    if (temp.cur >= temp.target && relayState == true) {
       RelayOff();
+      timerReset(3); //Reset cooldown timer when turning off relay
     }
   }
 }
+
 
 void configSave() {
   EEPROM.write(0,1); //Flag for autoload
