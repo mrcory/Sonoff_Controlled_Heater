@@ -2,6 +2,8 @@
  * 
  */
 
+bool resetFlag = false;
+
 
 void sendBlynk() { //Feedback to the Blynk app
   Blynk.virtualWrite(V49,temp.cur);
@@ -39,5 +41,13 @@ BLYNK_WRITE(V21) {
   if (param.asInt() == 1) {
     configSave();
     Blynk.virtualWrite(21,0);
+  }
+}
+
+BLYNK_WRITE(V70) {
+  resetFlag = param.asInt();
+
+  if (resetFlag == true) {
+    ESP.reset();
   }
 }
