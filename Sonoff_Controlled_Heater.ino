@@ -16,6 +16,13 @@
  *  Modifications and additions by: Cory McGahee
  *  
  *  Non-Commercial use ONLY!
+ *  
+ *  !!WARNING!!
+ *  Though a basic overload protection system is in this code, it is not guaranteed to
+ *  actually provide any protection. YOU take all risk and resposibility for any damage,
+ *  inury or death caused by the function or malfunction of this code. For maximum safety,
+ *  be certain that the attached load to this switch, be certain that your load is in proper
+ *  working order and will not overload your outlet and smart switch.
  */ 
 
 int configVersion = 0;
