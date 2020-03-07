@@ -241,7 +241,7 @@ void ReadCse7766()
 
 //Basic functions that must run
 void process() {
-  if (timer(1000,0)) {
+  if (timer(2000,0)) {
     ReadCse7766();
   }
 
@@ -318,8 +318,22 @@ bool overloadCheck() {
 }
 
 void safetyNet() {
+  overloadCheck();
+  
   if (!safeLoad && timerCheck(4) >= loadCooldown*1000 && loadAttempt < loadConnectAttempts)  {
         safeLoad = true;
         loadAttempt++;
+        timerReset(4);
+        timerReset(5);
     }
+
+  if (loadAttempt > 0) {
+    if (timerCheck(5) > 30*1000) { //If relay hasn't overloaded for 30 seconds, reset the loadAttempt count
+      loadAttempt = 0;
+    }
+
+    if (loadAttempt > loadConnectAttempts) {
+      resetRequired = true;
+    }
+  }
 }

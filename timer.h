@@ -4,10 +4,11 @@
  * 2 - Update Blynk app data
  * 3 - Heater trigger cooldown
  * 4 - Overload cooldown
+ * 5 - Overload reset
  */
 
 
-#define countDataAmount 5 //Number of timers
+#define countDataAmount 6 //Number of timers
 unsigned long countData[countDataAmount] = {0}; //Holds count information. (Adjust for numeber of timers needed.)
 
 

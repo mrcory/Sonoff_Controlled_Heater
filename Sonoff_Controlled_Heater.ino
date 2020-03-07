@@ -162,6 +162,8 @@ void loop() {
     //Serial.println(temp.cur);
   }
 
+  safetyNet(); //Overload protection
+
   if (isFirstRun == true) {
    Blynk.virtualWrite(V53,temp.target);
    Blynk.virtualWrite(V55,temp.offset);
