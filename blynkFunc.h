@@ -10,7 +10,6 @@ void sendBlynk() { //Feedback to the Blynk app
   Blynk.virtualWrite(V54,temp.target);
   Blynk.virtualWrite(V56,temp.offset);
   Blynk.virtualWrite(V58,cooldownPeriod);
-  
 }
 
 BLYNK_WRITE(V51) {
@@ -48,6 +47,6 @@ BLYNK_WRITE(V70) {
   resetFlag = param.asInt();
 
   if (resetFlag == true) {
-    ESP.reset();
+    //ESP.reset();
   }
 }
