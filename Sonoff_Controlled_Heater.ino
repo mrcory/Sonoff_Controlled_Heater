@@ -159,7 +159,6 @@ void loop() {
   
   if (timer(1000,2) == true) {
     sendBlynk();
-    //Serial.println(temp.cur);
   }
 
   safetyNet(); //Overload protection
