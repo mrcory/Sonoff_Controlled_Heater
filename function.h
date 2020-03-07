@@ -5,10 +5,12 @@
 // Toggle the relay on
 void RelayOn() 
 {
+  if (!resetRequired) {
   digitalWrite( RELAY, HIGH );
   relayState = true;
   Blynk.virtualWrite( V0, HIGH ); // Sync the Blynk button widget state
   Blynk.virtualWrite( V1, relayState*255 );
+  }
 }
 
 // Toggle the relay off
@@ -312,4 +314,21 @@ byte returnConfigVersion() {
   byte grabbedVersion;
   EEPROM.get(3,grabbedVersion);
   return grabbedVersion;
+}
+
+bool overloadCheck() {
+    if (current > 15) {
+        safeLoad = false;
+        return true;
+        timerReset(4);
+    } else {
+        return false;
+    }
+}
+
+void safetyNet() {
+  if (!safeLoad && timerCheck(4) >= loadCooldown*1000 && loadAttempt < loadConnectAttempts)  {
+        safeLoad = true;
+        loadAttempt++;
+    }
 }

@@ -21,3 +21,12 @@ Temperature temp = {
 * This is an anti-short cycle feature.
  */
 int cooldownPeriod = 30;
+
+// Max current allowed before disconnecting relay. Sonoff says the s31 is rated for 15 amps.
+#define maxSafeLoad 15
+
+// Cooldown before attempting to reconnect load
+#define loadCooldown 30
+
+// Attempts before giving up and leaving relay off until reset
+#define loadConnectAttempts 3

@@ -78,6 +78,12 @@ int energyResetCounter;
 //-------------------------------
 bool relayOveride = false;
 bool relayControl = false;
+bool safeLoad = true;
+bool previousSafeLoad = true;
+
+int loadAttempt = 0;
+bool resetRequired = false;
+
 
 #include "config.h"
 #include "timer.h"
@@ -170,5 +176,5 @@ void loop() {
       RelayOff();
     }
   }
-
+  previousSafeLoad = safeLoad; // Flag
 }
