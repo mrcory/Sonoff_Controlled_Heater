@@ -284,7 +284,7 @@ void configSave() {
   i+=sizeof(cooldownPeriod);
 
   EEPROM.commit();
-  Serial.println("Config Saved");
+  //Serial.println("Config Saved");
 }
 
 
@@ -300,12 +300,12 @@ void configLoad() {
   EEPROM.get(i,cooldownPeriod);
   i+=sizeof(cooldownPeriod);
 
-  Serial.println("Config Loaded");
+  //Serial.println("Config Loaded");
 
-  Serial.println(temp.target);
-  Serial.println(temp.offset);
-  Serial.println(temp.unit);
-  Serial.println(cooldownPeriod);
+  //Serial.println(temp.target);
+  //Serial.println(temp.offset);
+  //Serial.println(temp.unit);
+  //Serial.println(cooldownPeriod);
 }
 
 byte returnConfigVersion() {

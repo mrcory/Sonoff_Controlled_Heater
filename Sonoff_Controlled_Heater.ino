@@ -90,8 +90,6 @@ bool relayControl = false;
 
  void setup() {
   
-  Serial.begin(74880);
-  
   // WiFiManager intialization.
   WiFiManager wifi; 
 
@@ -124,6 +122,9 @@ bool relayControl = false;
   //Call timer setup from timer.h
   timerSetup();
 
+  Serial.flush();
+  Serial.begin( 4800 );
+
   // Switch LED off to signal initialization complete.
   digitalWrite( LED, HIGH );
 
@@ -131,9 +132,9 @@ bool relayControl = false;
 
   if (EEPROM.read(0) == 1 && returnConfigVersion() == configVersion) { //If flagged in EEPROM; we load our current position
     configLoad();
-    Serial.println("Pass Config Version Check");
+    //Serial.println("Pass Config Version Check");
   } else {
-    Serial.println("Fail Config Version Check, Reseting To Default");
+    //Serial.println("Fail Config Version Check, Reseting To Default");
     configSave();
     
   }
@@ -141,9 +142,11 @@ bool relayControl = false;
  }
 
 void loop() {
+
+  
   if (timer(1000,2) == true) {
     sendBlynk();
-    Serial.println(temp.cur);
+    //Serial.println(temp.cur);
   }
 
   if (isFirstRun == true) {
@@ -151,7 +154,6 @@ void loop() {
    Blynk.virtualWrite(V55,temp.offset);
    Blynk.virtualWrite(V57,cooldownPeriod);
   }
-  
 
   isFirstRun = false;
   
