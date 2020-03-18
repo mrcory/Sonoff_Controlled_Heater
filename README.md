@@ -26,6 +26,12 @@ server. The temperature information is sent via the [Bridge](http://docs.blynk.c
 * Amperage, Wattage, and Voltage Display
 * Session Power Consumption: (KWh) Resets upon power loss.
 
+## To Do  
+- [ ] Fix KwH display to show the correct amount.
+- [ ] Add a way to save historical KwH usage.
+- [ ] Find a use case for the hardware button.
+- [ ] Possibly add MQTT support.
+
 ## Credits  
 
 The code reading the power monitoring chip and other functions is from the below link and authored by James Eli.  
