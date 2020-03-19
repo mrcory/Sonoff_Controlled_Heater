@@ -4,9 +4,13 @@
 //to identify the device for OTA updates.
 #define deviceName "Heater"
 
-//Blynk token for the device that will be providing
-//the temperature.
-#define tempDeviceToken ""
+/*Uncomment the operating mode you wish to use. 
+ *  Normal  - Used for heating. If temp.cur < desired, turn on
+ *  Inverse - Operates in the inverse. If temp.cur > desired turn on | This mode could be used for an exhaust fan to limit
+ *  temperature or humidity. (Just feed in a humidity value instead of temperature.
+*/
+#define normalMode
+//#define inverseMode 
 
 //Temerature settings
 Temperature temp = {

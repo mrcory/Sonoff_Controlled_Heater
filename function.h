@@ -258,19 +258,35 @@ bool cooldownCheck() {
   }
 }
 
-void tempProcess() {
-  if (temp.cur < temp.target && relayState == false) { //If colder than set do next check
-    if (cooldownCheck() == true && temp.cur < temp.target - temp.offset) { //If cooldown has passed and temp is below turn on temp, turn on
-      RelayOn();
-    }
-  } else {
-    if (temp.cur >= temp.target && relayState == true) {
-      RelayOff();
-      timerReset(3); //Reset cooldown timer when turning off relay
+#ifdef normalMode //Create normalMode process function
+  void tempProcess() {
+    if (temp.cur < temp.target && relayState == false) { //If colder than set do next check
+      if (cooldownCheck() == true && temp.cur < temp.target - temp.offset) { //If cooldown has passed and temp is below turn on temp, turn on
+        RelayOn();
+      }
+    } else {
+      if (temp.cur >= temp.target && relayState == true) {
+        RelayOff();
+        timerReset(3); //Reset cooldown timer when turning off relay
+      }
     }
   }
-}
+#endif
 
+#ifdef inverseMode
+  void tempProcess() {
+    if (temp.cur > temp.target && relayState == false) { //If hotter than set do next check
+      if (cooldownCheck() == true && temp.cur > temp.target + temp.offset) { //If cooldown has passed and temp is above turn on temp, turn on
+        RelayOn();
+      }
+    } else {
+      if (temp.cur <= temp.target && relayState == true) {
+        RelayOff();
+        timerReset(3); //Reset cooldown timer when turning off relay
+      }
+    }
+  }
+#endif
 
 void configSave() {
   EEPROM.write(0,1); //Flag for autoload
