@@ -24,7 +24,6 @@ server. The temperature information is sent via the [Bridge](http://docs.blynk.c
 * Anti Short Cycle: Require a minimum "cooldown" before restarting the heater.
 * Overide Control; The ability to control the relay directly.
 * Amperage, Wattage, and Voltage Display
-* Session Power Consumption: (KWh) Resets upon power loss.
 
 ## To Do  
 - [ ] Fix KwH display to show the correct amount.
