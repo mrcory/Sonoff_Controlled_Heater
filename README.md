@@ -39,4 +39,4 @@ https://ucexperiment.wordpress.com/2019/01/20/using-a-sonoff-s31-with-blynk/
 I used it as a base and added in the features that I needed.
 
 ![Blynk App](https://github.com/mrcory/Sonoff_Controlled_Heater/blob/master/Extra/Blynk_Screenshot.png?raw=true)  
-###### **Override is purposefully misspelled to fit the button width.**
+###### *Override is purposefully misspelled to fit the button width.*
