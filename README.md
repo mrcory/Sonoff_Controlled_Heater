@@ -1,8 +1,11 @@
-## Sonoff Smart Plug (S31) Heater Controller  
+## Sonoff Smart Plug (S31) Heater Controller [Or exhaust fan controller.]
 
 This sketch is used on a Sonoff S31 Smart Plug connected to a "dumb" heater with a mechanical thermostat.
 Using this will allow electronic temperature control without having to modify the heater itself. The mechanical
-thermostat remains functioning and can be set higher that the desired range to act as a sort of safety.
+thermostat remains functioning and can be set higher that the desired range to act as a sort of safety.  
+
+As off version 2, an inverse mode has been added. This allows controlling the switch when the temperature (or humidity)
+is above the set desired value. (This is untested as I do not currently have no need of this feature.)
 
 
 ## Warning  
