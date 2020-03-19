@@ -25,6 +25,7 @@
  *  working order and will not overload your outlet and smart switch.
  */ 
 
+//Software Version 2
 int configVersion = 0;
 
 #include <ESP8266WiFi.h>
