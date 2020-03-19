@@ -24,7 +24,6 @@ server. The temperature information is sent via the [Bridge](http://docs.blynk.c
 * Anti Short Cycle: Require a minimum "cooldown" before restarting the heater.
 * Overide Control; The ability to control the relay directly.
 * Amperage, Wattage, and Voltage Display
-* Session Power Consumption: (KWh) Resets upon power loss.
 
 ## To Do  
 - [ ] Fix KwH display to show the correct amount.
@@ -39,4 +38,4 @@ https://ucexperiment.wordpress.com/2019/01/20/using-a-sonoff-s31-with-blynk/
 I used it as a base and added in the features that I needed.
 
 ![Blynk App](https://github.com/mrcory/Sonoff_Controlled_Heater/blob/master/Extra/Blynk_Screenshot.png?raw=true)  
-###### **Override is purposefully misspelled to fit the button width.**
+###### *Override is purposefully misspelled to fit the button width.*
