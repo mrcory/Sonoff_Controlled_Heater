@@ -22,6 +22,7 @@ void RelayOff()
   Blynk.virtualWrite( V1, relayState*255 );
 }
 
+/*
 // Handle switch changes originating on the Blynk app
 BLYNK_WRITE( V0 ) 
 {
@@ -32,17 +33,9 @@ BLYNK_WRITE( V0 )
   else 
     RelayOff();
 }
+*/
 
 
-// This function runs every time Blynk connection is established.
-BLYNK_CONNECTED() 
-{
-  if ( isFirstConnect ) 
-  {
-    Blynk.syncAll();
-    isFirstConnect = false;
-  }
-}
 
 // Handle hardware switch activation.
 void ButtonCheck() 
@@ -275,8 +268,8 @@ bool cooldownCheck() {
 
 #ifdef inverseMode
   void tempProcess() {
-    if (temp.cur > temp.target && relayState == false) { //If hotter than set do next check
-      if (cooldownCheck() == true && temp.cur > temp.target + temp.offset) { //If cooldown has passed and temp is above turn on temp, turn on
+    if (temp.target < temp.cur && relayState == false) { //If hotter than set do next check
+      if (cooldownCheck() == true && temp.target + temp.offset < temp.cur) { //If cooldown has passed and temp is above turn on temp, turn on
         RelayOn();
       }
     } else {
@@ -315,6 +308,7 @@ void configLoad() {
   i+=sizeof(temp.unit);
   EEPROM.get(i,cooldownPeriod);
   i+=sizeof(cooldownPeriod);
+
 }
 
 byte returnConfigVersion() {
