@@ -40,7 +40,7 @@ int configVersion = 0;
 
 bool isFirstRun = true;
 bool isFirstConnect = true;       // Flag for re-sync on connection.
-int relayState = LOW;             // Blynk app pushbutton status.
+int relayState = false;             // Blynk app pushbutton status.
 
 boolean SwitchReset = true;
 
@@ -97,6 +97,7 @@ bool resetRequired = false;
 #include "timer.h"
 #include "blynk.h"
 #include "function.h"
+WidgetBridge blynkBridge1(V100); //Initiating Bridge Widget on V100
 #include "blynkFunc.h"
 
 
@@ -121,6 +122,8 @@ bool resetRequired = false;
 
   // Set WIFI module to STA mode
   WiFi.mode( WIFI_STA );
+
+  
 
   // Initialize Blynk.
   #ifdef useLocalServer
@@ -152,6 +155,7 @@ bool resetRequired = false;
     configSave();
     
   }
+
   
  }
 

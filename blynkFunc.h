@@ -53,6 +53,6 @@ BLYNK_WRITE(V70) {
   resetFlag = param.asInt();
 
   if (resetFlag == true) {
-    //ESP.reset();
+    ESP.reset();
   }
 }
