@@ -10,6 +10,12 @@ void sendBlynk() { //Feedback to the Blynk app
   Blynk.virtualWrite(V54,temp.target);
   Blynk.virtualWrite(V56,temp.offset);
   Blynk.virtualWrite(V58,cooldownPeriod);
+
+  #ifdef inverseMode //Send high if using inverse mode
+    Blynk.virtualWrite(V61,255);
+  #else
+    Blynk.virtualWrite(V61,0);
+  #endif
 }
 
 BLYNK_WRITE(V51) {
