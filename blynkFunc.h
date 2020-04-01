@@ -4,6 +4,20 @@
 
 bool resetFlag = false;
 
+// This function runs every time Blynk connection is established.
+BLYNK_CONNECTED() 
+{
+  if ( isFirstConnect ) 
+  {
+    Blynk.syncAll();
+    isFirstConnect = false;
+  }
+  
+  #ifdef forwardTemp
+    blynkBridge1.setAuthToken(forwardAuth); // Device to forward to
+  #endif
+}
+
 
 void sendBlynk() { //Feedback to the Blynk app
   Blynk.virtualWrite(V49,temp.cur);
@@ -15,6 +29,11 @@ void sendBlynk() { //Feedback to the Blynk app
     Blynk.virtualWrite(V61,255);
   #else
     Blynk.virtualWrite(V61,0);
+  #endif
+
+
+  #ifdef forwardTemp
+    blynkBridge1.virtualWrite(V51,temp.cur);
   #endif
 }
 

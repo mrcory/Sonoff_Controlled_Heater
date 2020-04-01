@@ -4,6 +4,7 @@
 //to identify the device for OTA updates.
 #define deviceName "Heater"
 
+
 /*Uncomment the operating mode you wish to use. 
  *  Normal  - Used for heating. If temp.cur < desired, turn on
  *  Inverse - Operates in the inverse. If temp.cur > desired turn on | This mode could be used for an exhaust fan to limit
@@ -34,3 +35,7 @@ int cooldownPeriod = 30;
 
 // Attempts before giving up and leaving relay off until reset
 #define loadConnectAttempts 3
+
+//If you wish to forward the temperature to another device uncomment this line.
+//And, add the token in "blynk.h"
+#define forwardTemp
